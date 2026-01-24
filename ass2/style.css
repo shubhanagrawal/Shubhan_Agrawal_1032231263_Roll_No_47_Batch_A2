@@ -1,0 +1,48 @@
+/* Basic Reset and Styling */
+body {
+    font-family: sans-serif; /* Sets a clean, readable font */
+    background-color: #f4f4f4; /* Light gray background for the whole page */
+    color: #333; /* Default text color */
+    margin: 0; /* Removes default browser margin */
+    padding: 0;
+    line-height: 1.6; /* Improves readability of text */
+}
+
+header {
+    background-color: #333; /* Dark background for the header */
+    color: #fff; /* White text for contrast */
+    padding: 1rem 0; /* Adds spacing above and below header content */
+    text-align: center; /* Centers the heading text */
+}
+
+h1 {
+    margin: 0; /* Removes default margin for the h1 inside the header */
+}
+
+main {
+    padding: 2rem; /* Adds padding around the main content area */
+    max-width: 800px; /* Limits content width on large screens */
+    margin: 2rem auto; /* Centers the content block horizontally */
+    background-color: #a0c4ff; /* Light blue background for the main content area */
+    border: 1px solid #ccc; /* Adds a subtle border */
+    border-radius: 5px; /* Rounds the corners */
+}
+
+p {
+    margin-bottom: 1rem; /* Spacing between paragraphs */
+}
+
+ul {
+    list-style-type: disc; /* Uses standard bullet points */
+    margin-left: 20px; /* Indents the list */
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #333;
+    color: #fff;
+    position: fixed; /* Fixes the footer to the bottom of the viewport */
+    bottom: 0;
+    width: 100%;
+}
