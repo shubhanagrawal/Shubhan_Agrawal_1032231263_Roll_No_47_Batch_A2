@@ -2,92 +2,144 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Basic Form Validation</title>
+    <title>Form Validation</title>
 
     <style>
         body {
+            background: #f4f6f9;
             font-family: Arial, sans-serif;
-            margin: 40px;
         }
-        .error {
-            color: red;
+
+        .container {
+            width: 360px;
+            margin: 80px auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
             font-size: 14px;
         }
-        input {
-            margin-bottom: 10px;
-            padding: 6px;
-            width: 250px;
+
+        input:focus {
+            outline: none;
+            border-color: #007bff;
         }
+
+        .error {
+            color: red;
+            font-size: 13px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
         button {
-            padding: 6px 15px;
+            width: 100%;
+            background: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .success {
+            text-align: center;
+            color: green;
+            margin-top: 15px;
         }
     </style>
 </head>
 
 <body>
 
-<h2>Registration Form</h2>
+<div class="container">
+    <h2>Register</h2>
 
-<form onsubmit="return validateForm()">
+    <form onsubmit="return validateForm()">
 
-    <label>Lead>Name:</label><br>
-    <input type="text" id="name"><br>
-    <span id="nameError" class="error"></span><br>
+        <label>Name</label>
+        <input type="text" id="name">
+        <span id="nameError" class="error"></span>
 
-    <label>Email:</label><br>
-    <input type="text" id="email"><br>
-    <span id="emailError" class="error"></span><br>
+        <label>Email</label>
+        <input type="text" id="email">
+        <span id="emailError" class="error"></span>
 
-    <label>Password:</label><br>
-    <input type="password" id="password"><br>
-    <span id="passwordError" class="error"></span><br>
+        <label>Password</label>
+        <input type="password" id="password">
+        <span id="passwordError" class="error"></span>
 
-    <button type="submit">Submit</button>
+        <button type="submit">Submit</button>
 
-</form>
+        <div id="successMsg" class="success"></div>
+    </form>
+</div>
 
 <script>
 function validateForm() {
-    // Get values
     let name = document.getElementById("name").value.trim();
     let email = document.getElementById("email").value.trim();
     let password = document.getElementById("password").value.trim();
 
-    // Error flags
-    let isValid = true;
+    let valid = true;
 
-    // Clear previous errors
     document.getElementById("nameError").innerText = "";
     document.getElementById("emailError").innerText = "";
     document.getElementById("passwordError").innerText = "";
+    document.getElementById("successMsg").innerText = "";
 
-    // Name validation
     if (name === "") {
         document.getElementById("nameError").innerText = "Name is required";
-        isValid = false;
+        valid = false;
     }
 
-    // Email validation (basic)
     let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
     if (email === "") {
         document.getElementById("emailError").innerText = "Email is required";
-        isValid = false;
+        valid = false;
     } else if (!email.match(emailPattern)) {
         document.getElementById("emailError").innerText = "Invalid email format";
-        isValid = false;
+        valid = false;
     }
 
-    // Password validation
     if (password === "") {
         document.getElementById("passwordError").innerText = "Password is required";
-        isValid = false;
+        valid = false;
     } else if (password.length < 6) {
         document.getElementById("passwordError").innerText =
             "Password must be at least 6 characters";
-        isValid = false;
+        valid = false;
     }
 
-    return isValid; // false → form won’t submit
+    if (valid) {
+        document.getElementById("successMsg").innerText =
+            "Form submitted successfully!";
+    }
+
+    return false; // prevent actual submission for demo
 }
 </script>
 
